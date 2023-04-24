@@ -1,0 +1,90 @@
+{
+    "extension": "content-scripts",
+    "benchmarks": {
+        "crashes": [],
+        "cs: got AST": 0.09133883100003004,
+        "cs: AST": 0.0028508119976322632,
+        "cs: CFG": 0.0005609590007225052,
+        "cs: PDG": 0.00672420999762835,
+        "bp: got AST": 0.5754808449964912,
+        "bp: AST": 0.1732184149987006,
+        "bp: CFG": 0.07896717800031183,
+        "bp: PDG": 31.727186415999313,
+        "collected messages": 0.03125447899947176,
+        "linked messages": 0.993268017002265,
+        "cs: dangers & from WA": 0.0014815629983786494,
+        "bp: dangers & from WA": 0.07614983700113953,
+        "cs: got vulnerabilities": 0.00013832900003762916,
+        "bp: got vulnerabilities": 0.00020958199820597656
+    },
+    "cs": {
+        "direct_dangers": {},
+        "indirect_dangers": {
+            "danger1": {
+                "danger": "fetch",
+                "value": "fetch(URL(location).origin/.well-known/gpc.json)",
+                "sink-param1": "URL(location).origin/.well-known/gpc.json",
+                "line": "57 - 57",
+                "filename": "content-scripts/contentScript.js",
+                "dataflow": false,
+                "param_id0": {}
+            }
+        },
+        "exfiltration_dangers": {}
+    },
+    "bp": {
+        "direct_dangers": {
+            "danger1": {
+                "danger": "tabs.executeScript",
+                "value": "chrome.tabs.executeScript(details.tabId, <pdg_js.node.ValueExpr object at 0x7fd32bc502b0>)",
+                "sink-param1": "details.tabId",
+                "sink-param2": "eved info passed into callback\n */\n onBeforeNavigate: details => {\n // Resets certain cached info\n if (details.frameId === 0) {\n wellknown[details.tabId] = null;\n signalPerTab[detail",
+                "line": "2407 - 2413",
+                "filename": "background.bundle.js",
+                "dataflow": false
+            },
+            "danger2": {
+                "danger": "XMLHttpRequest.open",
+                "value": "XMLHttpRequest().open(HEAD, a, -1)",
+                "sink-param1": "HEAD",
+                "sink-param2": "a",
+                "sink-param3": -1,
+                "line": "10 - 10",
+                "filename": "background.bundle.js",
+                "dataflow": false,
+                "param_id0": {}
+            },
+            "danger3": {
+                "danger": "XMLHttpRequest.open",
+                "value": "XMLHttpRequest().open(GET, a)",
+                "sink-param1": "GET",
+                "sink-param2": "a",
+                "line": "10 - 10",
+                "filename": "background.bundle.js",
+                "dataflow": false,
+                "param_id0": {}
+            }
+        },
+        "indirect_dangers": {},
+        "exfiltration_dangers": {
+            "danger1": {
+                "danger": "cookies.getAll",
+                "value": "chrome.cookies.getAll(<pdg_js.node.ValueExpr object at 0x7fd32be782b0>, <pdg_js.node.FunctionExpression object at 0x7fd32be782e0>)",
+                "sink-param1": "nHeadersReceived.r",
+                "sink-param2": "oveListener(onHeadersReceived);\n chrome.webNavigation.onBeforeNavigate.removeListener(onBeforeNavigate);\n chrome.webNavigation.onCommitted.removeListener(onCommitted);\n}\n\n;// CONCATENATED MODULE: ./src/background/cookiesIAB.js\n/*\nLicensed per https://github.com/privacy-tech-lab/gpc-optmeowt/blob/main/LICENSE.md\nprivacy-tech-lab, https://privacytechlab.org/\n*/\n\n/*\ncookiesIAB.js\n================================================================================\ncookiesIAB.js handles the IAB CCPA `usprivacy` proposal cookie\nmodification process\n*/\n\nlet iabVars = [\"usprivacy\", \"us-privacy\", \"us_privacy\"];\nlet defaultName = \"usprivacy\";\nlet defaultValue = \"1NYN\";\n\n/**\n * Initializes the IAB proposal for CCPA Opt-Out functionality\n * via a `us_privacy` first-party cookie\n * Pulls data about the cu",
+                "line": "1590 - 1616",
+                "filename": "background.bundle.js",
+                "dataflow": false
+            },
+            "danger2": {
+                "danger": "cookies.getAll",
+                "value": "chrome.cookies.getAll(<pdg_js.node.ValueExpr object at 0x7fd32bfae820>, <pdg_js.node.FunctionExpression object at 0x7fd32bfae850>)",
+                "sink-param1": "ll([\n target[targetFuncName",
+                "sink-param2": "...args),\n isWrite && tx.done,\n ]))[0];\n };\n cachedMethods.set(prop, method);\n return method;\n}\nreplaceTraps((oldTraps) => ({\n\t oldTraps,\n\t get: (target, prop, receiver) => getMethod(target, prop) || oldTraps.get(target, prop, receiver),\n\t has: (target, ",
+                "line": "1149 - 1163",
+                "filename": "background.bundle.js",
+                "dataflow": false
+            }
+        }
+    }
+}
